@@ -1,5 +1,7 @@
 <script lang="ts">
   import Countdown from "./Countdown.svelte"
+  import { countdownTimer } from "./countdown";
 </script>
 
-<Countdown countDown={20} />
+<Countdown />
+<span>secend: {$countdownTimer}</span>
