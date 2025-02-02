@@ -1,0 +1,20 @@
+.title {
+  text-align: center;
+}
+
+.input-form {
+  background-color: #fafafa;
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 32px;
+}
+
+.todo-item {
+  background-color: #fafafa;
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 8px;
+  display: flex;
+}
