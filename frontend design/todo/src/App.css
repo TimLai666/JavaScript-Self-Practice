@@ -18,3 +18,8 @@
   margin-bottom: 8px;
   display: flex;
 }
+
+.user {
+  color: #777777;
+  font-size: 14px;
+}
