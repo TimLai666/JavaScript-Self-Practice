@@ -22,7 +22,7 @@ function App() {
         <button onClick={createTodoItem}>新增</button>
       </div>
       {todoItems.map((item) => {
-        return <div className="todo-item">{item}</div>;
+        return <div className="todo-item" key={item}>{item}</div>;
       })}
     </>
   );
