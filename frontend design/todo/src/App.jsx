@@ -8,9 +8,7 @@ function App() {
   const [todoItems, setTodoItems] = useState([]);
   const createTodoItem = () => {
     setTodoItems([{ name, who, date }, ...todoItems]);
-    setName("");
-    setWho("");
-    setDate("");
+    [setName, setWho, setDate].forEach((set) => set(""));
   };
 
   return (
