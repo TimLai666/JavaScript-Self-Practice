@@ -7,6 +7,10 @@ function App() {
   const [date, setDate] = useState("");
   const [todoItems, setTodoItems] = useState([]);
   const createTodoItem = () => {
+    if (!name || !who || !date) {
+      alert("請輸入完整資訊");
+      return;
+    }
     setTodoItems([{ name, who, date }, ...todoItems]);
     [setName, setWho, setDate].forEach((set) => set(""));
   };
