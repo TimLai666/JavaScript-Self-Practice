@@ -8,6 +8,9 @@ function App() {
   const [todoItems, setTodoItems] = useState([]);
   const createTodoItem = () => {
     setTodoItems([{ name, who, date }, ...todoItems]);
+    setName("");
+    setWho("");
+    setDate("");
   };
 
   return (
@@ -35,9 +38,10 @@ function App() {
         />
         <button onClick={createTodoItem}>新增</button>
       </div>
-      {todoItems.map((item) => {
+      {todoItems.map((item, idx) => {
+        console.log(idx);
         return (
-          <div className="todo-item" key={item}>
+          <div className="todo-item" key={idx}>
             <div>
               <div>
                 {item.name} - {item.date}
