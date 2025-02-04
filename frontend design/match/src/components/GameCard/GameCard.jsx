@@ -1,17 +1,16 @@
-import './GameCard.css';
+import "./GameCard.css";
 
 function GameCard(props) {
-  const {content, open, onClick} = props;
-  if (!open) return (
-    <div className="game-card" onClick={onClick}>
-      {/* {content} */}
+  const { content, open, onClick } = props;
+  return (
+    <div className={`game-card ${open ? "open" : ""}`} onClick={onClick}>
+      {open ? (
+        <div className="front">{content}</div>
+      ) : (
+        <div className="back"></div>
+      )}
     </div>
   );
-  return (
-    <div className="game-card" onClick={onClick}>
-      {content}
-    </div>
-  )
 }
 
 export default GameCard;

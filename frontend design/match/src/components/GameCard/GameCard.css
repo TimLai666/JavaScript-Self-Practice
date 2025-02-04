@@ -1,19 +1,35 @@
 .game-card {
+  position: relative;
   height: 100%;
   width: 100%;
   border: 1px solid black;
   background-color: white;
   font-size: 48px;
   font-weight: 900;
+
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.game-card.open {
+  transform: rotateY(180deg);
+}
+
+.game-card > .front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
 }
 
-/* .closed{
-  display: none;
+.game-card > .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+  backface-visibility: hidden;
 }
-
-.opened{
-  background-color: #f1f1f1;
-} */
