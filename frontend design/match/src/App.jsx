@@ -10,16 +10,21 @@ const GameCards = Array.from({ length: 16 }, (_, i) =>
 }));
 
 function App() {
-  const [openCards, setOpenCards] = useState([]);
-  const handleCardClick = (id, Open) => {
-    if (Open) {
-      if (openCards.length >= 2) {
-        setOpenCards([id]);
-        return;
-      }
-      setOpenCards([...openCards, id]);
+  const [currentOpenCard, setCurrentOpenCard] = useState();
+  const [matchedCards, setMatchedCards] = useState([]);
+  const handleCardClick = (cardItem) => {
+    if (!currentOpenCard) {
+      setCurrentOpenCard(cardItem);
+      return;
     } else {
-      setOpenCards(openCards.filter((cardId) => cardId !== id));
+      if (
+        currentOpenCard.content === cardItem.content &&
+        currentOpenCard.id !== cardItem.id
+      ) {
+        // match
+        setMatchedCards([...matchedCards, currentOpenCard, cardItem]);
+      }
+      setCurrentOpenCard();
     }
   };
 
@@ -27,13 +32,19 @@ function App() {
     <>
       <div className="board">
         {GameCards.map((card) => {
-          const isOpen = openCards.includes(card.id);
+          const isCurrentOpen = currentOpenCard?.id === card.id;
+          const isMatched = matchedCards.some(
+            (matchedCard) => matchedCard.id === card.id
+          );
+          const isOpen = isCurrentOpen || isMatched;
           return (
             <div className="card-box" key={card.id}>
               <GameCard
                 open={isOpen}
                 content={card.content}
-                onClick={() => handleCardClick(card.id, !isOpen)}
+                onClick={() => {
+                  if (!isOpen) handleCardClick(card);
+                }}
               />
             </div>
           );
