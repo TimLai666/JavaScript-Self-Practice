@@ -1,3 +1,5 @@
+
+
 .board {
   width: 600px;
   background-color: #ababab;
@@ -15,4 +17,33 @@
   /* background-color: #fff; */
   /* border: 1px solid black; */
   padding: 16px;
+}
+
+.game-over {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.95);
+  z-index: 100;
+}
+
+.game-over h2 {
+  font-size: 80px;
+  margin-bottom: 16px;
+}
+
+.game-over button {
+  font-size: 40px;
+  padding: 8px 16px;
+  margin-top: 16px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid black;
 }

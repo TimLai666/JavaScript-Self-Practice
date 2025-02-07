@@ -1,6 +1,6 @@
 import "./App.css";
 import GameCard from "./components/GameCard/GameCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const GameCards = Array.from({ length: 16 }, (_, i) =>
   String.fromCharCode(`A`.charCodeAt(0) + i / 2)
@@ -12,6 +12,25 @@ const GameCards = Array.from({ length: 16 }, (_, i) =>
 function App() {
   const [currentOpenCard, setCurrentOpenCard] = useState();
   const [matchedCards, setMatchedCards] = useState([]);
+  const score = matchedCards.length / 2;
+  let [isOver, setIsOver] = useState();
+  const startGame = () => {
+    setIsOver(false);
+    setCurrentOpenCard();
+    setMatchedCards([]);
+    GameCards.sort(() => Math.random() - 0.5);
+  };
+
+  useEffect(() => {
+    if (score === GameCards.length / 2) {
+      setIsOver(true);
+    }
+  }, [score]);
+
+  useEffect(() => {
+    startGame();
+  }, []);
+
   const handleCardClick = (cardItem) => {
     if (!currentOpenCard) {
       setCurrentOpenCard(cardItem);
@@ -30,6 +49,15 @@ function App() {
 
   return (
     <>
+      {isOver ? (
+        <div className="game-over">
+          <h2>Game Over</h2>
+          <button onClick={startGame}>重新開始</button>
+        </div>
+      ) : (
+        ""
+      )}
+      <h3>分數： {score}分</h3>
       <div className="board">
         {GameCards.map((card) => {
           const isCurrentOpen = currentOpenCard?.id === card.id;
