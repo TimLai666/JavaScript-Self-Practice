@@ -1,0 +1,9 @@
+.item-card {
+  border: 1px solid #777777;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.item-title {
+  margin: 0 0 0 8px;
+}
