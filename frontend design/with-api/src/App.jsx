@@ -1,3 +1,4 @@
+import { getWashData } from "./api/wash";
 import "./App.css";
 import ItemCard from "./components/ItemCard";
 import { useEffect, useState } from "react";
@@ -8,10 +9,7 @@ function App() {
   const getData = async () => {
     setLoading(true);
     try {
-      const res = await fetch(
-        "https://soa.tainan.gov.tw/Api/Service/Get/3d9dee2b-7852-4255-9612-52fe5121b8b4"
-      );
-      const newdata = await res.json();
+      const newdata = await getWashData()
       console.log(newdata);
       setData(newdata.data);
     } catch (err) {
